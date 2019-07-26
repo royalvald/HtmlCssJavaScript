@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Jquery Ajax - Post</title>
+<script src="jquery.js"></script>
+</head>
+
+<body>
+	<div id="result">
+    
+    </div>
+    <button onclick="test()">
+    	测试
+    </button>	
+	<div class="code">
+	    $.post(url,[data],[callback],[type])
+        <br/>使用POST方式来进行异步请求
+        <br/>该方法无法获取错误信息
+        <br/>type为浏览器接受数据的类型,默认为text，可以设置为xml、json
+    </div>
+    <script>
+	function test(){
+		$.post("server.php", {name:"极客",age:23},
+		function (data, textStatus){
+			$("#result").html(data);
+			console.log(data);	
+			console.log(textStatus);//请求状态：success，error等等
+			});
+		}
+    </script>
+</body>
+</html>

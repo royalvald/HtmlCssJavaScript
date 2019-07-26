@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Ajax跨域 Jsoup</title>
+<script src="jquery.js"></script>
+</head>
+
+<body>
+	<div id="re"></div>
+	<script>
+    $.ajax({
+		url:"http://192.168.0.168/jike_php/ajaxDemo/5/JsoupData.html",
+		type:"GET",
+		jsonp: 'jsoncallback',	//这个可以加也可以不加
+	 	dataType: 'jsonp',
+		success:function(data){
+			console.log(data);
+			},
+		error:function(err){
+			console.info(err);
+			}	
+			
+	});
+	function myCallBack(data){
+		console.log(data);
+		}
+    
+    </script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Ajax跨域</title>
+<script src="jquery.js"></script>
+</head>
+
+<body>
+	<div id="re"></div>
+	<script>
+    $.ajax({
+		url:"http://192.168.0.168/jike_php/ajaxDemo/5/data.html",
+		type:"GET",
+		success:function(data){
+			$("#re").html(data);
+			},
+		error:function(err){
+			console.log(err);
+			}	
+			
+	});
+    
+    </script>
+</body>
+</html>

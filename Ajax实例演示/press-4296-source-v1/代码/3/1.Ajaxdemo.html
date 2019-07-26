@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>JavaScript原生Ajax</title>
+</head>
+
+<body>
+	<div id="result">
+    
+    </div>
+    <button onclick='doGet("text.dat")'>
+    	使用GET提交，获取text.dat的数据
+    </button>
+    <button onclick='doGet("server.php?name=小强")'>
+    	使用GET提交，参数为name=小强
+    </button>
+    <button onclick='doPost("server.php","name="+encodeURI("小强"+"&age=18"))'>
+    	使用POST提交，参数为name=小强&age=18
+    </button>
+    
+	
+	;
+    <script>
+	var res=document.getElementById("result");
+	//第一步：创建一个XMLHttpRequest对象，如果浏览器不支持，则创建 ActiveXObject
+	var xmlHttp;
+	function createxmlHttpRequest() {
+		if (window.ActiveXObject) {
+			xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+		}
+		else if (window.XMLHttpRequest) {
+			xmlHttp=new XMLHttpRequest();
+		}
+	}
+	
+	function doGet(url){
+		createxmlHttpRequest();
+		xmlHttp.open("GET",url);	//第二步，打开连接
+		xmlHttp.send(null);			//第三步，发送数据（请求体或查询参数）
+		//第四步，监听响应变化
+		xmlHttp.onreadystatechange = function(){
+			if ((xmlHttp.readyState == 4) && (xmlHttp.status == 200)) {
+			/*readyState的状态
+				0：未初始化，尚未调用open（）方法
+				1：启动，已经调用open（），但未调用send（）
+				2：发送，已经调用send（），但尚未接收到响应
+				3：接收，已经接收到部分响应
+				4：完成，已经接收到所有响应数据
+			*/
+				//第五步，处理数据
+				console.log(xmlHttp.response);
+				res.innerHTML=xmlHttp.response;
+			}
+			else {
+				console.log('fail');
+				console.log(xmlHttp.readyState);
+			}
+		}
+	}
+	
+	function doPost(url,data){
+		createxmlHttpRequest();
+		xmlHttp.open("POST",url);
+		xmlHttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+		xmlHttp.send(data);
+		xmlHttp.onreadystatechange = function() {
+			if ((xmlHttp.readyState == 4) && (xmlHttp.status == 200)) {
+				console.log(xmlHttp.response);
+				res.innerHTML=xmlHttp.response;
+			}
+			else {
+				console.log('fail');
+				console.log(xmlHttp.readyState);
+			}
+		}
+	} 
+    </script>
+</body>
+</html>

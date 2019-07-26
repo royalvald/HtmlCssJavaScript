@@ -1,0 +1,21 @@
+$("#searchBtn").on(
+	"click",
+	function(){
+		if($("#keyword").val()!=''){
+			$.ajax({
+				url:"server.php",
+				data:"keyword="+$("#keyword").val(),
+				success:function(data){
+					$(".res").html(data);
+				},
+				error:function(e){
+					console.log(e);
+				}
+			});
+		}
+		else{
+			alert("请输入搜索关键词");
+		}
+
+	}
+)

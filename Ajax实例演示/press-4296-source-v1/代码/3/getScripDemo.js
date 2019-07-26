@@ -1,0 +1,1 @@
+console.log("我是getScriptDemo文件,我表示已经载入成功了");

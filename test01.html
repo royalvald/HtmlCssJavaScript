@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>hello</title>
+    <script>
+        var hello = function () {
+            alert("hello friends");
+        }
+        var test = 0;
+        function ContinueHello() {
+            var testFunction = setInterval(hello, 200);
+            test++;
+            if (test >=1)
+                clearInterval(testFunction);
+        }
+    </script>
+</head>
+
+<body>
+    <input type="text" id="first" />
+    <input type="button" value="测试" onclick="ContinueHello()" />
+</body>
+
+</html>

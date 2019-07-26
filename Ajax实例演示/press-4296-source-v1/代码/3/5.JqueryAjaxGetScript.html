@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Jquery Ajax - getScript</title>
+<script src="jquery.js"></script>
+</head>
+
+<body>
+	<div id="result">
+    
+    </div>
+    <button onclick="test()">
+    	测试
+    </button>	
+	<div class="code">
+	    $.getScript(url,[callback])
+        <br/>使用GET方法请求载入并执行一个JavaScript文件
+        <br/>该方法无法获取错误信息
+        <br/>type为浏览器接受数据的类型,默认为text，可以设置为xml、json
+    </div>
+    <script>
+	function test(){
+		$.getScript("getScripDemo.js",
+		function (data, textStatus){
+			console.log(data);	
+			console.log(textStatus);//请求状态：success，error等等
+			});
+		}
+    </script>
+</body>
+</html>

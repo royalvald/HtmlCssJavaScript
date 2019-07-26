@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Json</title>
+<script src="jquery.js"></script>
+</head>
+
+<body>
+    <script>
+	var jsonStr='{"friends":[{"name":"asmita"},{"name":"asmita","email":"asmita@qq.com","tel":"100"},{"name":"asmita","email":"asmita@qq.com","tel":"100"}],"family":[{"name":"asmita","email":"asmita@qq.com","tel":"100"},{"name":"asmita","email":"asmita@qq.com","tel":"100"}]}';
+	var jsonObj=eval("["+jsonStr+"]");
+	// console.log(jsonObj[0]);
+	// console.log(jsonObj[0]["friends"]);
+	// console.log(jsonObj[0].friends);
+	
+	//使用JSON.parse解析json字符串为JavaScript对象
+	var JsonParseBoj=JSON.parse(jsonStr);
+	// console.log(JsonParseBoj);
+	
+	
+	//使用JSON.stringify把JavaScript对象转换为json字符串
+	var stringifyJsonStr=JSON.stringify(JsonParseBoj);
+	// console.log(stringifyJsonStr);
+	
+	//将对象转换为json字符串
+	var tempObj={
+		name:"asmita",
+		qq:"10000",
+		tel:"12345",
+		email:"asmita@qq.com",
+		edu:{
+			name:"南京大学",
+			highSchol:"人民大学"
+			}
+		};
+	var stringifyJsontempObj=JSON.stringify(tempObj);
+	// console.log(stringifyJsontempObj);
+	
+	
+	
+	//使用$JQUERY.parseJSON解析json字符串为JavaScript对象
+	var JsonParseJquery=$.parseJSON(jsonStr);
+	console.log(JsonParseJquery);
+    </script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Jquery Ajax - Ajax</title>
+<script src="jquery.js"></script>
+</head>
+
+<body>
+	<div id="result">
+    
+    </div>
+    <button onclick="test()">
+    	测试
+    </button>	
+	<div class="code">
+	    load(url,[data],[callback]);
+        <br/>载入远程 HTML 文件代码并插入至 DOM 中
+        <br/>该方法默认使用GET方式请求，如果[data]参数有数据则自动转换为POST
+    </div>
+    <script>
+	function test(){
+		$.ajax({
+			url:"server.php",
+			type:"GET",
+			data:"name=ASMITA",
+			dataType:"text",
+			success :function(data){
+				console.log(data);
+				$("#result").html(data);
+				},
+			error:function(error){
+				console.log(error);
+				}	
+			});
+		}
+    </script>
+</body>
+</html>
